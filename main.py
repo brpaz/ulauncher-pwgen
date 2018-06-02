@@ -1,49 +1,46 @@
 import json
 import logging
+import pwgen
 from time import sleep
 from ulauncher.api.client.Extension import Extension
 from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
+from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAction
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 
 logger = logging.getLogger(__name__)
 
-
-class DemoExtension(Extension):
+class PwgenExtension(Extension):
 
     def __init__(self):
-        super(DemoExtension, self).__init__()
+        logger.info('init Pwgen Extension')
+        super(PwgenExtension, self).__init__()
         self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
-        self.subscribe(ItemEnterEvent, ItemEnterEventListener())
-
 
 class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
         items = []
-        logger.info('preferences %s' % json.dumps(extension.preferences))
-        for i in range(5):
-            item_name = extension.preferences['item_name']
-            data = {'new_name': '%s %s was clicked' % (item_name, i)}
+        
+        if event.get_argument():
+            pwLength = int(event.get_argument())
+        else:
+            pwLength = int(extension.preferences['pw_length'])
+        
+        pwCount = int(extension.preferences['pw_count'])
+        passwords = pwgen.pwgen(pwLength, pwCount, False, False, True, True, False, True, '!$.#*+-_~()][?%&@,;', True)
+        for password in passwords:
             items.append(ExtensionResultItem(icon='images/icon.png',
-                                             name='%s %s' % (item_name, i),
-                                             description='Item description %s' % i,
-                                             on_enter=ExtensionCustomAction(data, keep_app_open=True)))
+                                             name=password,
+                                             description='Press Enter to copy this password to clipboard',
+                                             highlightable=False,
+                                             on_enter=CopyToClipboardAction(password)
+                                             ))
 
         return RenderResultListAction(items)
 
-
-class ItemEnterEventListener(EventListener):
-
-    def on_event(self, event, extension):
-        data = event.get_data()
-        return RenderResultListAction([ExtensionResultItem(icon='images/icon.png',
-                                                           name=data['new_name'],
-                                                           on_enter=HideWindowAction())])
-
-
 if __name__ == '__main__':
-    DemoExtension().run()
+    PwgenExtension().run()

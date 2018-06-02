@@ -1,33 +1,32 @@
 {
     "manifest_version": "1",
     "api_version": "1",
-    "name": "Demo",
-    "description": "Demo extension",
-    "developer_name": "Aleksandr Gornostal",
+    "name": "Password Generator",
+    "description": "Generates a strong password",
+    "developer_name": "Bruno Paz",
     "icon": "images/icon.png",
     "options": {
         "query_debounce": 0.05
     },
     "preferences": [
         {
-            "id": "demo_kw",
+            "id": "pwgen_kw",
             "type": "keyword",
-            "name": "Demo",
-            "default_value": "dm"
+            "name": "Keyword",
+            "default_value": "pwgen"
         },
         {
-            "id": "item_name",
+            "id": "pw_length",
             "type": "input",
-            "name": "Item name",
-            "description": "Name for each item",
-            "default_value": "Item"
+            "name": "Default Password length",
+            "default_value": "16"
         },
         {
-            "id": "memo",
-            "type": "text",
-            "name": "Memo",
-            "description": "Write something here",
-            "default_value": ""
+            "id": "pw_count",
+            "type": "input",
+            "name": "Password count",
+            "description": "Number of passwords to generate",
+            "default_value": 5
         }
     ]
 }
