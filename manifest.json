@@ -1,32 +1,32 @@
 {
-    "manifest_version": "1",
-    "api_version": "1",
-    "name": "Password Generator",
-    "description": "Generates a strong password",
-    "developer_name": "Bruno Paz",
-    "icon": "images/icon.png",
-    "options": {
-        "query_debounce": 0.05
+  "required_api_version": "^2.0.0",
+  "name": "Password Generator",
+  "description": "Generates a strong password using pwgen",
+  "developer_name": "Bruno Paz",
+  "icon": "images/icon.png",
+  "options": {
+    "query_debounce": 0.05
+  },
+  "preferences": [
+    {
+      "id": "pwgen_kw",
+      "type": "keyword",
+      "name": "Pwgen",
+      "description": "Strong Password generator",
+      "default_value": "pwgen"
     },
-    "preferences": [
-        {
-            "id": "pwgen_kw",
-            "type": "keyword",
-            "name": "Keyword",
-            "default_value": "pwgen"
-        },
-        {
-            "id": "pw_length",
-            "type": "input",
-            "name": "Default Password length",
-            "default_value": "16"
-        },
-        {
-            "id": "pw_count",
-            "type": "input",
-            "name": "Password count",
-            "description": "Number of passwords to generate",
-            "default_value": 5
-        }
-    ]
+    {
+      "id": "pw_length",
+      "type": "input",
+      "name": "Default Password length",
+      "default_value": "16"
+    },
+    {
+      "id": "pw_count",
+      "type": "input",
+      "name": "Password count",
+      "description": "Number of passwords to generate",
+      "default_value": 5
+    }
+  ]
 }
