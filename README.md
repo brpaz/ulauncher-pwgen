@@ -1,6 +1,11 @@
 # Ulauncher pwgen extension
 
+[![Ulauncher Extension](https://img.shields.io/badge/Ulauncher-Extension-green.svg?style=for-the-badge)](https://ext.ulauncher.io/-/github-brpaz-ulauncher-pwgen)
+[![CircleCI](https://img.shields.io/circleci/build/github/brpaz/ulauncher-pwgen.svg?style=for-the-badge)](https://circleci.com/gh/brpaz/ulauncher-pwgen)
+![License](https://img.shields.io/github/license/brpaz/ulauncher-pwgen.svg?style=for-the-badge)
+
 > [ulauncher](https://ulauncher.io/) Extension for generating strong passwords using `pwgen` python package.
+
 
 ## Usage
 
@@ -10,8 +15,8 @@
 
 ## Requirements
 
-* [ulauncher](https://ulauncher.io/)
-* Python >= 2.7
+* [ulauncher 5](https://ulauncher.io/)
+* Python >= 3
 * [pwgen](https://pypi.org/project/pwgen/) package - ```pip3 install pwgen```
 
 ## Install
@@ -25,8 +30,8 @@ Open ulauncher preferences window -> extensions -> add extension and paste the f
 
 ```
 git clone https://github.com/brpaz/ulauncher-pwgen
-cd ~/.cache/ulauncher_cache/extensions/ulauncher-pwgen
-ln -s <repo_location> ulauncher-pwgen
+cd ulauncher-pwgen
+make link
 ```
 
 To see your changes, stop ulauncher and run it from the command line with: ```ulauncher -v```.
@@ -41,9 +46,11 @@ Contributions, issues and Features requests are welcome.
 
 ## Show your support
 
-<a href="https://www.buymeacoffee.com/brpaz" target="_blank"><img src="https://www.buymeacoffee.com/Z1Bu6asGV" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+<a href="https://www.buymeacoffee.com/Z1Bu6asGV" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
-## License
+
+## License 
 
 Copywright @ 2019 [Bruno Paz](https://github.com/brpaz)
+
 This project is [MIT](LLICENSE) Licensed.
