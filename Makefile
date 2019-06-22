@@ -1,5 +1,5 @@
 
-EXT_NAME:=ulauncher-pwgen
+EXT_NAME:=com.github.com.brpaz.ulauncher-pwgen
 EXT_DIR:=$(shell pwd)
 
 .PHONY: help
