@@ -4,7 +4,7 @@
 [![CircleCI](https://img.shields.io/circleci/build/github/brpaz/ulauncher-pwgen.svg?style=for-the-badge)](https://circleci.com/gh/brpaz/ulauncher-pwgen)
 ![License](https://img.shields.io/github/license/brpaz/ulauncher-pwgen.svg?style=for-the-badge)
 
-> [ulauncher](https://ulauncher.io/) Extension for generating strong passwords using `pwgen` python package.
+> [ulauncher](https://ulauncher.io/) Extension for generating strong passwords using `pwgen` tool.
 
 
 ## Usage
@@ -32,9 +32,8 @@ Open ulauncher preferences window -> extensions -> add extension and paste the f
 git clone https://github.com/brpaz/ulauncher-pwgen
 cd ulauncher-pwgen
 make link
+make dev
 ```
-
-To see your changes, stop ulauncher and run it from the command line with: ```ulauncher -v```.
 
 ## TODO
 
