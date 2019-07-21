@@ -2,7 +2,8 @@
 EXT_NAME:=com.github.com.brpaz.ulauncher-pwgen
 EXT_DIR:=$(shell pwd)
 
-.PHONY: help
+.PHONY: help lint format link unlink deps dev
+.DEFAULT_TARGET: help
 
 help: ## Show help menu
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -23,4 +24,4 @@ deps: ## Install Python Dependencies
 	@pip3 install -r requirements.txt
 
 dev: ## Runs ulauncher on development mode
-	ulauncher --no-extensions --dev -v
+	ulauncher --no-extensions --dev -v |& grep "encoder"
