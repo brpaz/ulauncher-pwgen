@@ -15,7 +15,7 @@ from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAct
 # We fall back to pwgen command if the module is not there
 try:
     import pwgen
-    pwgen_module = True
+    pwgen_module = True ## pylint: disable=invalid-name
 except ImportError:
     pwgen_module = False ## pylint: disable=invalid-name
 
