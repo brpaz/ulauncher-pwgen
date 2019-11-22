@@ -90,10 +90,10 @@ class KeywordQueryEventListener(EventListener):
             items.append(
                 ExtensionResultItem(
                     icon='images/icon.png',
-                    name=password,
+                    name=str(password),
                     description='Press Enter to copy this password to clipboard',
                     highlightable=False,
-                    on_enter=CopyToClipboardAction(password)
+                    on_enter=CopyToClipboardAction(str(password))
                 )
             )
 
