@@ -15,9 +15,9 @@ from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAct
 # We fall back to pwgen command if the module is not there
 try:
     import pwgen
-    pwgen_module = True ## pylint: disable=invalid-name
+    pwgen_module = True
 except ImportError:
-    pwgen_module = False ## pylint: disable=invalid-name
+    pwgen_module = False
 
 LOGGER = logging.getLogger(__name__)
 
@@ -42,7 +42,6 @@ def is_exist(program):
 
 class PwgenExtension(Extension):
     """ Main Extension Constructor """
-
     def __init__(self):
         LOGGER.info('init Pwgen Extension')
         super(PwgenExtension, self).__init__()
@@ -51,7 +50,6 @@ class PwgenExtension(Extension):
 
 class KeywordQueryEventListener(EventListener):
     """ Class that listens to the Keyboard event """
-
     def on_event(self, event, extension):
         """ Handles event """
         items = []
@@ -64,38 +62,28 @@ class KeywordQueryEventListener(EventListener):
         pw_count = int(extension.preferences['pw_count'])
 
         if pwgen_module:
-            passwords = pwgen.pwgen(
-                pw_length,
-                pw_count,
-                False,
-                False,
-                True,
-                True,
-                False,
-                True,
-                '!$.#*+-_~()][?%&@,;',
-                True
-            )
+            passwords = pwgen.pwgen(pw_length, pw_count, False, False, True,
+                                    True, False, True, '!$.#*+-_~()][?%&@,;',
+                                    True)
         elif not pwgen_module and is_exist(program='pwgen'):
-            command = 'pwgen -1 -c -n -y {} {}'.format(
-                str(pw_length),
-                str(pw_count)
-            )
+            command = 'pwgen -1 -c -n -y {} {}'.format(str(pw_length),
+                                                       str(pw_count))
             output = check_output(command.split(' '))
             passwords = output.splitlines()
         else:
-            passwords = ['Could not find neither pwgen module nor the command!']
+            passwords = [
+                'Could not find neither pwgen module nor the command!'
+            ]
 
         for password in passwords:
+            password = password.decode('utf-8')
             items.append(
                 ExtensionResultItem(
                     icon='images/icon.png',
-                    name=str(password),
+                    name=password,
                     description='Press Enter to copy this password to clipboard',
                     highlightable=False,
-                    on_enter=CopyToClipboardAction(str(password))
-                )
-            )
+                    on_enter=CopyToClipboardAction(password)))
 
         return RenderResultListAction(items)
 
