@@ -84,6 +84,8 @@ class KeywordQueryEventListener(EventListener):
                     description='Press Enter to copy this password to clipboard',
                     highlightable=False,
                     on_enter=CopyToClipboardAction(password)))
+                )
+            )
 
         return RenderResultListAction(items)
 
